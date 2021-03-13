@@ -242,6 +242,32 @@
   text-decoration: none;
 }
 
+.cta-btn-green {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  -webkit-box-align: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  background-color: #8BC34A;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 18px;
+  border-radius: 20px;
+  outline: none;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  border-image: initial;
+  text-decoration: none;
+}
+
 button {
   appearance: button;
   -webkit-writing-mode: horizontal-tb !important;
