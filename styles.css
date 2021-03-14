@@ -420,6 +420,12 @@ button {
   }
 }
 
+@media only screen and (min-width: 1024px) {
+  .outer-container {
+    width: 800px;
+  }
+}
+
 /* OTHERS */
 .jYmfTq {
   -webkit-box-align: center;
