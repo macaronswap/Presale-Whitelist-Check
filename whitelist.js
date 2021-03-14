@@ -1298,25 +1298,39 @@ let _addressList = [
   '0x007627c9E382b02b9ccf3a853B0d4289B3688192'
 ]
 
+var _addressListChecksummed = []
+
 $(async () => {
+  _addressList.forEach(element => {
+    _addressListChecksummed.push(Web3.utils.toChecksumAddress(element))
+  });
   $('#loader').hide()
   $('#content').show()
   $('#input-address').keyup(checkWhitelistStatus)
 })
 
 async function checkWhitelistStatus() {
-  let inputAddress = $('#input-address').val()
+  var inputAddress = $('#input-address').val()
   if (inputAddress) {
-    const isWhiteListed = _addressList.includes(inputAddress)
+    //checksum
+    try {
+      inputAddress = Web3.utils.toChecksumAddress(inputAddress)
+    } catch (error) {
+      $('#whitelist-status').html("Invalid wallet address")
+      $('#whitelist-status').removeClass('cta-btn-green').removeClass('cta-btn-blue').addClass('cta-btn-red')
+      return;
+    }
+
+    const isWhiteListed = _addressListChecksummed.includes(inputAddress)
     if (isWhiteListed) {
       //whitelisted
       $('#whitelist-status').html("Accepted for whitelist.")
-      $('#whitelist-status').removeClass('cta-btn-blue').addClass('cta-btn-green')
+      $('#whitelist-status').removeClass('cta-btn-blue').removeClass('cta-btn-red').addClass('cta-btn-green')
     }
     else {
       //sl('success', 'Your wallet is not whitelisted.')
       $('#whitelist-status').html("Your wallet is not whitelisted.")
-      $('#whitelist-status').removeClass('cta-btn-green').addClass('cta-btn-blue')
+      $('#whitelist-status').removeClass('cta-btn-green').removeClass('cta-btn-red').addClass('cta-btn-blue')
     }
   } else {
     $('#input-address').val('')
