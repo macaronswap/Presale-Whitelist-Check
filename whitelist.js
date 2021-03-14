@@ -1333,6 +1333,8 @@ async function checkWhitelistStatus() {
       $('#whitelist-status').removeClass('cta-btn-green').removeClass('cta-btn-red').addClass('cta-btn-blue')
     }
   } else {
+    $('#whitelist-status').html("Please enter your wallet address.")
+    $('#whitelist-status').removeClass('cta-btn-green').removeClass('cta-btn-red').addClass('cta-btn-blue')
     $('#input-address').val('')
   }
 }
